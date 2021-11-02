@@ -1,6 +1,6 @@
 <header>
   <h1>{{ title }}</h1>
   <!--title pulled from header.component.ts class-->
-  <app-button color="green" text="Add"></app-button>
+  <app-button color="green" text="Add" (btnClick)="toggleTask()"></app-button>
   <!--button pulled from button.component.html -->
 </header>

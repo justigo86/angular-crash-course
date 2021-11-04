@@ -8,11 +8,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TaskService {
+  private apiUrl = 'http://localhost:3000/tasks'
 
-  constructor() { }
+  constructor(private http:HttpClient) { }    //can use this.http for http methods (get, post, update, delete)
 
   getTasks(): Observable<Task[]> {    //observable linked to subscribe in tasks.components.ts
-    const tasks = of(TASKS);
-    return tasks;
+    return this.http.get<Task[]>(this.apiUrl)   //pulls data from backend using get request
   }
 }

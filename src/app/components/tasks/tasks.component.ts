@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TASKS } from '../../mock-tasks';
+import { TaskService } from 'src/app/services/task.service';
 import { Task } from '../../Task';
 
 @Component({
@@ -8,9 +8,15 @@ import { Task } from '../../Task';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  tasks: Task[] = TASKS;    //variable tasks is the Task[] array type that consists of (mock-)TASKS
+  tasks: Task[] = [];    //variable tasks is the Task[] array type that consists of (mock-)TASKS
 
-  constructor() { }
+  displayText = '';
+  getData(val: string) {
+    this.displayText = val
+  }
+  constructor(private taskService: TaskService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.tasks = this.taskService.getTasks()
+  }
 }

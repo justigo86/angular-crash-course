@@ -1,1 +1,4 @@
-<p *ngFor="let task of tasks"> {{ task.text }} </p>
+<app-task-item *ngFor="let eachTask of tasks" [taskItem]="eachTask"></app-task-item>
+<!--task in each iteration -->
+<input type="text" #id (input)="getData(id.value)">
+<p>  Display the input text here: {{ displayText }} </p>

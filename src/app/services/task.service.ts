@@ -34,4 +34,8 @@ export class TaskService {
     return this.http.put<Task>(url, task, httpOptions);
       //put request of interface type Task - params: (endpoint URL, resources to add/update, HTTP options)
   }
+
+  addTask(task: Task): Observable<Task>{
+    return this.http.post<Task>(this.apiUrl, task, httpOptions);
+  }
 }

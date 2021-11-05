@@ -34,4 +34,9 @@ export class TasksComponent implements OnInit {
     task.reminder = !task.reminder;   //this functionality works with UI, but does not set in server
     this.taskService.updateTaskReminder(task).subscribe();  //updates task reminder in server - making it stay on refresh
   }
+
+  addTask(task: Task) {               //save task to the server
+    this.taskService.addTask(task)
+      .subscribe((task) => (this.tasks.push(task)))
+  }
 }

@@ -1,3 +1,8 @@
+<!--parent to add-task and task-item components-->
+<app-add-task
+  (onAddTask)="addTask($event)">
+
+</app-add-task>
 <app-task-item
   *ngFor="let eachTask of tasks"
   [taskItem]="eachTask"
@@ -5,5 +10,7 @@
   (onToggleReminder)="toggleReminder(eachTask)"
 ></app-task-item>
 <!--task in each iteration -->
-<input type="text" #id (input)="getData(id.value)">
-<p>  Display the input text here: {{ displayText }} </p>
+
+
+<!-- <input type="text" #id (input)="getData(id.value)">
+<p>  Display the input text here: {{ displayText }} </p> -->

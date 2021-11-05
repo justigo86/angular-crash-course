@@ -1,4 +1,8 @@
-<app-task-item *ngFor="let eachTask of tasks" [taskItem]="eachTask"></app-task-item>
+<app-task-item
+  *ngFor="let eachTask of tasks"
+  [taskItem]="eachTask"
+  (onDeleteTask)="deleteTask(eachTask)"
+></app-task-item>
 <!--task in each iteration -->
 <input type="text" #id (input)="getData(id.value)">
 <p>  Display the input text here: {{ displayText }} </p>

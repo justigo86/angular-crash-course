@@ -1,4 +1,11 @@
-<div class="task">
-  <h3>{{ taskItem.text }} <fa-icon [ngStyle]="styles" [icon]="faTimes"></fa-icon></h3>
+<div [ngClass]="{ reminder : taskItem.reminder }" class="task">
+  <!--class set to reminder based on task-item reminder status -->
+  <h3>{{ taskItem.text }}
+    <fa-icon
+      [ngStyle]="styles"
+      [icon]="faTimes"
+      (click)="onDelete(taskItem)"
+    ></fa-icon>
+  </h3>
   <p>{{ taskItem.day }}</p>
 </div>

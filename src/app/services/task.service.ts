@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { TASKS } from '../mock-tasks';
+// import { TASKS } from '../mock-tasks';
 import { Task } from '../Task';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -13,6 +13,13 @@ export class TaskService {
   constructor(private http:HttpClient) { }    //can use this.http for http methods (get, post, update, delete)
 
   getTasks(): Observable<Task[]> {    //observable linked to subscribe in tasks.components.ts
+                        //Task referenced as a generic type <Task[]>
     return this.http.get<Task[]>(this.apiUrl)   //pulls data from backend using get request
+  }
+
+  deleteTask(task: Task): Observable<Task> {
+    const url = `${this.apiUrl}/${task.id}`;  //url is the localhost with task id
+    return this.http.delete<Task>(url);     //http method delete to remove url interface type Task
+      //returns an Observable - needs subscribe
   }
 }

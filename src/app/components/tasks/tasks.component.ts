@@ -21,4 +21,12 @@ export class TasksComponent implements OnInit {
       .subscribe((tasks) => this.tasks = tasks)     //subscribe to observable in task.service.ts
       //similar to a promise that repeatedly checks for updates(/tasks)
   }
+
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task)
+      .subscribe(() => (this.tasks = this.tasks.filter((t) => t.id !== task.id)));
+        //subscribe to deleteTask Observable to ensure UI updates when db (on server) is changed
+            //task deleted, .then (subscribe) the task is removed from UI
+        //filter the tasks array to show the remaining tasks that were not deleted
+  }
 }

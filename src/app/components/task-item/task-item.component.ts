@@ -10,10 +10,16 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class TaskItemComponent implements OnInit {
   @Input() taskItem!: Task;
   @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter();  //Task referenced as a generic type <Task[]>
+  @Output() onToggleReminder: EventEmitter<Task> = new EventEmitter();
   faTimes = faTimes;
 
   onDelete(task: any) {
-    this.onDeleteTask.emit(task);
+    this.onDeleteTask.emit(task);   //emitting event and must associate event in parent component (tasks)
+              //emit method 
+  }
+
+  onToggle(task: any) {
+    this.onToggleReminder.emit(task);
   }
 
   styles = {'color': 'red'}

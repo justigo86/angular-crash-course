@@ -1,4 +1,7 @@
-<div [ngClass]="{ reminder : taskItem.reminder }" class="task">
+<div
+  [ngClass]="{ reminder : taskItem.reminder }"
+  (dblclick)="onToggle(taskItem)"
+  class="task">
   <!--class set to reminder based on task-item reminder status -->
   <h3>{{ taskItem.text }}
     <fa-icon

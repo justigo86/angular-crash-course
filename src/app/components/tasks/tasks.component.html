@@ -2,6 +2,7 @@
   *ngFor="let eachTask of tasks"
   [taskItem]="eachTask"
   (onDeleteTask)="deleteTask(eachTask)"
+  (onToggleReminder)="toggleReminder(eachTask)"
 ></app-task-item>
 <!--task in each iteration -->
 <input type="text" #id (input)="getData(id.value)">

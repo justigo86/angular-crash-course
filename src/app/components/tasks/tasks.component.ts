@@ -29,4 +29,9 @@ export class TasksComponent implements OnInit {
             //task deleted, .then (subscribe) the task is removed from UI
         //filter the tasks array to show the remaining tasks that were not deleted
   }
+
+  toggleReminder(task: Task) {
+    task.reminder = !task.reminder;   //this functionality works with UI, but does not set in server
+    this.taskService.updateTaskReminder(task).subscribe();  //updates task reminder in server - making it stay on refresh
+  }
 }
